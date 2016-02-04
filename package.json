@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-stylus": "^2.3.0",
+    "normalize": "^0.3.1",
+    "rupture": "^0.6.1",
+    "typographic": "^2.9.3"
+  }
+}
