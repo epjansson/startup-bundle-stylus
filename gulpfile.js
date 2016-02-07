@@ -7,6 +7,7 @@ var poststylus = require('poststylus');
 var lost = require('lost');
 var notify = require('gulp-notify');
 var nano = require('gulp-cssnano');
+var concat = require('gulp-concat');
 
 gulp.task('styles', function(){
     gulp.src('assets/stylus/app.styl')
@@ -18,14 +19,23 @@ gulp.task('styles', function(){
 });
 
 gulp.task('cssnano', function(){
-    gulp.src('css/app.css')
+    gulp.src('css/**/*.css')
         .pipe(nano())
         .pipe(notify("CSS fixed and compiled!"))
         .pipe(gulp.dest('./css/')
     );
 });
 
+gulp.task('js-concat', function(){
+    gulp.src('assets/js/**/*.js')
+        .pipe(concat('main.js'))
+        .pipe(gulp.dest('./js/')
+    );
+});
+
 gulp.task('watch', function(){
     gulp.watch('assets/stylus/**/*.styl', ['styles']);
-    gulp.watch('css/*.css', ['cssnano']);
+    gulp.watch('assets/js/**/*.js', ['js-concat']);
+    gulp.watch('css/**/*.css', ['cssnano']);
+
 });
